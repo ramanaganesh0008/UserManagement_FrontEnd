@@ -1,0 +1,221 @@
+<html>
+
+<head>
+    <title>Users List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script language="javascript" type="text/javascript"></script>
+
+    <link href="../css/userlist.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+
+</head>
+
+<body style=" background-color: rgb(244, 246, 249)" onload=getUserList()>
+
+
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container-fluid">
+                <div class="navbar-header">
+
+                    <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                                aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+        
+                            </button> -->
+                    <div class="navbar-brand">
+
+
+                        <p style="color : white">
+                            User Management
+                        </p>
+                    </div>
+                    <a id="menu-toggle" data-toggle="collapsed" class="active" style="padding-top: 5px ;padding-left : 25px">
+                        <i id="left" class="fa fa-chevron-right"></i>
+                        <!-- <svg-icon><src  href="sprite.svg#si-glyph-arrow-right" /></svg-icon> -->
+                    </a>
+
+                    <!-- <ul class="nav navbar-nav navbar-right" style="padding-left:900px ">
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white">Admin User
+                                <b class="fa fa-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="./profile.html"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+
+                                <li class="divider"></li>
+                                <li><a href="./login.html"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </nav>
+        <div id="side-wrapper" class="active">
+            <nav id="spy">
+
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                <!-- <div class="collapse navbar-collapse navbar-ex1-collapse"> -->
+                <ul class="side-nav nav">
+                    <li>
+                        <a style="color: white " href="./homepage.html"><span style="padding-left: 25px" class="glyphicon glyphicon-dashboard
+                                        "></span>
+                            <span style="padding-left: 5px"> Dashboard</span></a>
+
+                    </li>
+                    <li>
+                        <a style="color: white" href="#" data-toggle="collapse" data-target="#submenu-1"><span style="padding-left: 25px"
+                                class="glyphicon glyphicon-user
+                                        "></span>
+                            <span style="padding-left: 5px">User</span> <i class="fa fa-fw fa-angle-down pull-right"
+                                style="padding-left: 25px"></i></a>
+                        <ul id="submenu-1" class="collapse">
+                            <li><a href="./user.html" style="padding-right: 5px">
+                                    <span style="padding-left: 25px">New User</span></a>
+                                </a></li>
+                            <li><a href="./userslist.html"></i>
+                                    <span style="padding-left: 25px">Users List</span></a>
+
+                                </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a style="color: white" id="profilePage"><span style="padding-left: 25px" class="glyphicon glyphicon-user
+                                        "></span>
+                            <span style="padding-left: 5px">Profile</span></a>
+                    </li>
+
+                    <li>
+                        <a style="color: white" href="./login.html"><span style="padding-left: 25px" class="glyphicon glyphicon-off
+                                        "></span>
+                            <span style="padding-left: 5px" id="logout"> Logout</span></a>
+                    </li>
+
+                </ul>
+
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+        <div class="container-fluid">
+            <div id="page-content-wrapper" style="padding-top: 10px">
+
+                <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="list-group">
+                                <h1 class="list-group-item-heading"> Welcome Admin Admin</h1>
+                                <p class="list-group-item-text">
+                                    you last logged in on:
+                                </p>
+                            </div>
+                        </div>
+                    </div> -->
+                <div class="row" style="padding-left: 0px">
+                    <div class="well" style=" padding-top:80px ; background-color: white">
+                        <p style="text-align:left;">Users
+
+                            <span style="float:right;">
+                                <a href="./homepage.html"><i class="fa fa-home "></i>Home / </a>Users
+                            </span>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div id="page-content-wrapper" style="padding-top: 10px">
+
+
+                        <div class="well" style="height: 60px">
+                            <!-- <div class="panel">
+                                <div class="panel-heading">
+                                    <div class="panel-title">
+                                        hihihih -->
+                            <button class="btn btn-primary" type="submit" id="userPage">
+                                <span class="glyphicon glyphicon-user">
+                                    New User
+                                </span>
+                            </button>
+
+                            <!-- </div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="row" style="padding-left: 15px; padding-right: 15px">
+                            <div class="well" style=" padding-top:80px ; background-color: white">
+                                <!-- <table id="table" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Dob</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Role</th>
+                                            <th scope="col">Account</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id="newRow">
+                                            <th scope="row"><span id="id"></span></th>
+                                            <td><span id="name"> </span></td>
+                                            <td><span id="email"></span></td>
+                                            <td><span id="dateOfBirth"></span></td>
+                                            <td><span id="status"></span></td>
+                                            <td><span id="role"></span></td>
+                                            <td><span class="fa fa-lock" style="color: seagreen"></span></td>
+
+                                            <td>
+                                                <a href="./editprofile.html" class="fa fa-edit" style="color: #00AAFF"></a>
+                                                <a href="" style="color: red" class="glyphicon glyphicon-trash"></a></td>
+
+                                        </tr>
+                             
+                                    </tbody>
+                                </table> -->
+                                <table id="table" class='display table table-bordered '>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+
+                                            <th>Dob</th>
+
+                                            <th>Status</th>
+                                            <th>Role</th>
+                                            <th>Account</th>
+
+                                        </tr>
+                                    </thead>
+                                    <!-- <tbody>
+                                    </tbody> -->
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    <script src="../js/userList.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+</body>
+
+</html>
