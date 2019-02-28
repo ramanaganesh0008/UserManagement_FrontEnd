@@ -456,7 +456,7 @@ function editValue() {
                 document.getElementById('middleName').value = user.middleName;
 
             }
-            if (user.lastName.lengt == 0) {
+            if (user.lastName.length == 0) {
                 document.getElementById('lastName').value = '-';
 
             }

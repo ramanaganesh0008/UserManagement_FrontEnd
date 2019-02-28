@@ -61,7 +61,7 @@ function getUserList()
                      
                      { "mData": "status" },
                      { "mData": "role" },
-                    //  {render : editIcon}
+                     {render : editIcon}
                ]
         })
    });

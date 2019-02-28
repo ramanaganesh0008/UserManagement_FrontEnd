@@ -30,7 +30,8 @@ $(document).ready(function () {
             userName: $("#userName").val(),
             password: $("#password").val(),
             confirmPassword: $("#confirmPassword").val(),
-            role : $("#role").val()
+            role : $("#role").val(),
+            profilePath : $('#uploader').val()
 
         }
         console.log(userData);
@@ -109,6 +110,8 @@ $('#datepicker').datepicker({
 
             for (i = 0; i < s.length; i++) {
                 s[i].each(function (index) {
+                    
+                    
                     $(this)
                         .data('width', $(this).data('base-width'))
                         .data('height', $(this).data('base-height'))
@@ -163,6 +166,8 @@ $('#datepicker').datepicker({
                 $('.zoom', $(event.currentTarget).parent()).show('fade');
                 UserImage.handleDrop($(event.currentTarget).parent(),
                 event.target.files);
+                console.log('hoihihi ', event.target.files);
+                
             });
         },
 
@@ -175,6 +180,7 @@ $('#datepicker').datepicker({
         },
 
         handleDrop: function (elt, files) {
+console.log('elt ',elt);
 
             UserImage.hideDroppableArea(elt);
 
@@ -183,6 +189,8 @@ $('#datepicker').datepicker({
 
             if (file.type.match('image.*')) {
                 UserImage.handleImage(elt, file);
+                console.log('file ',file.name);
+                
             } else {
                 alert("This file is not an image.");
             }
@@ -190,6 +198,8 @@ $('#datepicker').datepicker({
         },
 
         handleImage: function (elt, file) {
+            console.log('elt 1 ',elt);
+            
             UserImage.resizeImage(elt, file, elt.data('width'), elt.data('height'), function (data, width, height) {
                 UserImage.placeImage(elt, data);
                 var pos = $(elt).position();
@@ -200,6 +210,8 @@ $('#datepicker').datepicker({
                 })
                    
                 UserImage.uploaded[elt] = file;
+                console.log('file path ',file);
+                
             });
         },
 
@@ -214,7 +226,11 @@ $('#datepicker').datepicker({
                 callback);
             }
             fileTracker.readAsDataURL(file);
-
+            console.log('file tracker ',fileTracker);
+            console.log('file path ',file);
+          
+            
+            
             fileTracker.onabort = function () {
                 alert("The upload was aborted.");
             }
@@ -285,6 +301,8 @@ $('#datepicker').datepicker({
 
             var file = UserImage.uploaded[elt];
             UserImage.handleImage(elt, file);
+            console.log('file path ',file);
+            
         }
     }
 
@@ -399,7 +417,11 @@ var Resample = (function (canvas) {
 }(
 this.document.createElement("canvas")));  
 
-    $(".toggle-password").click(function() {
+   
+
+
+
+$(".toggle-password").click(function() {
 
     $(this).toggleClass("fa-eye fa-eye-slash");
     var input=document.getElementById("password");
@@ -433,4 +455,4 @@ this.document.createElement("canvas")));
             localStorage.removeItem('token')
         });
         
-        
+      
